@@ -6,16 +6,17 @@ import { useState } from 'react';
 const Shop = () => {
   const [cartNumber, setCartNumber] = useState(0);
 
-  function handleClick(e, number) {
-    console.log(cartNumber);
-    e.preventDefault();
+  function handleClick(e, inputId) {
+    let number = document.getElementById(inputId).value;
     let passedNumber;
     if (number === '') {
       passedNumber = 1;
-    } else passedNumber = number;
+    } else passedNumber = +number;
+    console.log('number', passedNumber);
     let previousNumber = cartNumber;
     let newNumber = +previousNumber + +passedNumber;
     setCartNumber(newNumber);
+    return;
   }
 
   return (
