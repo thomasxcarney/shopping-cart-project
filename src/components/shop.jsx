@@ -6,6 +6,7 @@ import ShoppingCart from './shoppingCart';
 const Shop = () => {
   const [cartNumber, setCartNumber] = useState(0);
   const [cartArr, setCartArr] = useState([]);
+  const [checkoutActive, setCheckoutActive] = useState(false);
 
   function handleClick(e, inputId, product) {
     let number = document.getElementById(inputId).value;
@@ -30,16 +31,45 @@ const Shop = () => {
     return;
   }
 
-  return (
-    <>
-      <Navbar cartNumber={cartNumber} />
-      <ShoppingCart cart={cartArr} />
-      <div>
-        <h1>this is the shop</h1>
-      </div>
-      <Products cartNumber={cartNumber} handleClick={handleClick} />
-    </>
-  );
+  function handleCheckoutClick(e) {
+    e.preventDefault();
+    if (checkoutActive) {
+      setCheckoutActive(false);
+    } else setCheckoutActive(true);
+    return;
+  }
+
+  if (checkoutActive) {
+    return (
+      <>
+        <Navbar
+          cartNumber={cartNumber}
+          checkoutActive={checkoutActive}
+          handleCheckoutClick={handleCheckoutClick}
+        />
+        <ShoppingCart cart={cartArr} />
+        {/* <div>
+          <h1>this is the shop</h1>
+        </div>
+        <Products cartNumber={cartNumber} handleClick={handleClick} /> */}
+      </>
+    );
+  } else {
+    return (
+      <>
+        <Navbar
+          cartNumber={cartNumber}
+          checkoutActive={checkoutActive}
+          handleCheckoutClick={handleCheckoutClick}
+        />
+        {/* <ShoppingCart cart={cartArr} /> */}
+        <div>
+          <h1>this is the shop</h1>
+        </div>
+        <Products cartNumber={cartNumber} handleClick={handleClick} />
+      </>
+    );
+  }
 };
 
 export default Shop;
