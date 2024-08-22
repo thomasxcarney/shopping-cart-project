@@ -9,7 +9,7 @@ function Products({ cartNumber, handleClick }) {
     const getProductImg = async (number) => {
       const response = await fetch(`https://fakestoreapi.com/products/${number}`, { mode: 'cors' });
       const product = await response.json();
-      return { name: product.title, photo: product.image };
+      return { name: product.title, photo: product.image, quantity: 0 };
     };
 
     const createImageArray = async (numberOfProducts) => {
@@ -37,7 +37,7 @@ function Products({ cartNumber, handleClick }) {
           <p>{product.name}</p>
           <form>
             <input type="number" id={product.name} placeholder="1" step="1" />
-            <button type="button" onClick={(e) => handleClick(e, product.name)}>
+            <button type="button" onClick={(e) => handleClick(e, product.name, product)}>
               Add to cart
             </button>
           </form>

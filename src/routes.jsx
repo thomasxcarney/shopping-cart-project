@@ -2,6 +2,7 @@ import App from './App';
 // import Home from './components/home';
 import Shop from './components/shop';
 import Page from './components/page';
+import ShoppingCart from './components/shoppingCart';
 
 const routes = [
   {
@@ -22,9 +23,10 @@ const routes = [
     element: <Page />
   },
   {
-    path: '/shop',
+    path: 'shop',
     element: <Shop />
-  }
+  },
+  { path: 'cart', element: <ShoppingCart /> }
 ];
 
 export default routes;
