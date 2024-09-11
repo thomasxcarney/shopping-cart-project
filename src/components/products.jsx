@@ -3,26 +3,26 @@ import { useEffect } from 'react';
 import styles from './Styles/product.module.css';
 
 function Products({ cartNumber, handleClick }) {
-  const [imgArr, setImgArr] = useState([]);
+  const [productArr, setProductArr] = useState([]);
 
   const updateState = async () => {
-    const getProductImg = async (number) => {
+    const getProducts = async (number) => {
       const response = await fetch(`https://fakestoreapi.com/products/${number}`, { mode: 'cors' });
       const product = await response.json();
       return { name: product.title, photo: product.image, quantity: 0 };
     };
 
-    const createImageArray = async (numberOfProducts) => {
-      const imageTempArr = [];
+    const createProductArray = async (numberOfProducts) => {
+      const productTempArr = [];
       for (let i = 1; i <= numberOfProducts; i++) {
-        let image = await getProductImg(i);
-        imageTempArr.push(image);
+        let productTemp = await getProducts(i);
+        productTempArr.push(productTemp);
       }
-      setImgArr(imageTempArr);
+      setProductArr(productTempArr);
       return;
     };
 
-    await createImageArray(5);
+    await createProductArray(5);
   };
 
   useEffect(() => {
@@ -31,7 +31,7 @@ function Products({ cartNumber, handleClick }) {
 
   return (
     <>
-      {imgArr.map((product) => (
+      {productArr.map((product) => (
         <div key={product.name} className={`productContainer ${styles.card}`}>
           <img src={product.photo} key={product.name} className={styles.images}></img>
           <p>{product.name}</p>

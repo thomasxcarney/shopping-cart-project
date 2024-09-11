@@ -25,7 +25,7 @@ const Navbar = ({ cartNumber, checkoutActive, handleCheckoutClick }) => {
         <Link to="/shop">Shop</Link>
         <div id="navBarCartContainer">
           <p>Cart</p>
-          <p>{cartNumber}</p>
+          <p id="navBarCartNumber">{cartNumber}</p>
           <button type="button" onClick={(e) => handleCheckoutClick(e)}>
             Checkout
           </button>

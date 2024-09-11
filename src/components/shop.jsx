@@ -48,10 +48,6 @@ const Shop = () => {
           handleCheckoutClick={handleCheckoutClick}
         />
         <ShoppingCart cart={cartArr} />
-        {/* <div>
-          <h1>this is the shop</h1>
-        </div>
-        <Products cartNumber={cartNumber} handleClick={handleClick} /> */}
       </>
     );
   } else {
@@ -62,7 +58,6 @@ const Shop = () => {
           checkoutActive={checkoutActive}
           handleCheckoutClick={handleCheckoutClick}
         />
-        {/* <ShoppingCart cart={cartArr} /> */}
         <div>
           <h1>this is the shop</h1>
         </div>
